@@ -1,5 +1,8 @@
+// @flow
+
+import type { StatelessFunctionalComponent } from 'react'
 import React from 'react'
 
-const App = () => <div>App</div>
-
-export { App }
+export const App: StatelessFunctionalComponent<{}> = ({}) => (
+  <div>App</div>
+)

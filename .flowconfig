@@ -1,1 +1,11 @@
-;[ignore][include][libs][options]
+[ignore]
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

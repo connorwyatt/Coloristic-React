@@ -4,9 +4,13 @@
   "private": true,
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
+    "flow-bin": "^0.60.1",
+    "flow-typed": "^2.2.3",
     "husky": "^0.14.3",
     "prettier": "^1.9.1",
     "react-scripts": "1.0.17"
@@ -16,7 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "postinstall": "flow-typed install",
     "precommit": "yarn run check-format",
+    "flow": "flow",
     "format": "prettier --write \"**/*.js\" \"**/*.json\"",
     "check-format":
       "prettier --list-different \"**/*.js\" \"**/*.json\""
