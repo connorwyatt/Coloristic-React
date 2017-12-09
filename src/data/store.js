@@ -4,6 +4,7 @@ import {
   compose,
   createStore
 } from 'redux'
+import { createEpicMiddleware } from 'redux-observable'
 import type { Action } from './actions'
 import { epics } from './epics'
 import type { State } from './reducers'
@@ -11,9 +12,9 @@ import { reducers } from './reducers'
 
 export type Store = ReduxStore<State, Action>
 
-const middleware = createEpicMiddleware(epics)
-
-let appliedMiddleware = applyMiddleware(...middleware)
+let appliedMiddleware = applyMiddleware(
+  createEpicMiddleware(epics)
+)
 
 if (process.env.NODE_ENV === 'development') {
   const composeEnhancers =
