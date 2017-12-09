@@ -21,7 +21,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "flow-typed install",
-    "precommit": "yarn run check-format",
+    "precommit": "yarn run check-format && yarn run flow",
     "flow": "flow",
     "format": "prettier --write \"**/*.js\" \"**/*.json\"",
     "check-format":
