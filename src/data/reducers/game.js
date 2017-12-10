@@ -11,8 +11,8 @@ const currentColor = (
   action: Action
 ) => {
   switch (action.type) {
-    case GameActionTypes.newGame:
-      return 'randomColor'
+    case GameActionTypes.newColor:
+      return action.payload
     default:
       return state
   }
