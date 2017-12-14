@@ -1,20 +1,35 @@
+import { createSelector } from 'reselect'
 import type { Color } from '../../constants/colors'
 import type { State } from '../reducers'
-import type { GameState } from '../reducers/game'
+import type {
+  ColorList,
+  CurrentColorIndex,
+  GameState
+} from '../reducers/game'
 
 const gameState: State => GameState = (state: State) =>
   state.game
 
 export class GameSelectors {
-  static currentColor: State => Color = (state: State) => {
-    const game = gameState(state)
+  static currentColorIndex: State => CurrentColorIndex = (
+    state: State
+  ) => gameState(state).currentColorIndex
 
-    debugger
+  static colorList: State => ColorList = (state: State) =>
+    gameState(state).colorList
 
-    if (!game.colorList) {
-      return null
+  static currentColor: State => Color = createSelector(
+    GameSelectors.currentColorIndex,
+    GameSelectors.colorList,
+    (
+      currentColorIndex: CurrentColorIndex,
+      colorList: ColorList
+    ) => {
+      if (!colorList) {
+        return null
+      }
+
+      return colorList[currentColorIndex]
     }
-
-    return game.colorList[game.currentColorIndex]
-  }
+  )
 }
