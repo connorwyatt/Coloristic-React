@@ -1,6 +1,9 @@
+import type { Color } from '../../constants/colors'
+
 export class GameActionTypes {
   static newColor = 'game:newColor'
   static newGame = 'game:newGame'
+  static resetColorList = 'game:resetColorList'
 }
 
 export type NewColorAction = {
@@ -10,6 +13,10 @@ export type NewColorAction = {
 
 export type NewGameAction = {
   +type: GameActionTypes.newGame
+}
+
+export type ResetColorListAction = {
+  +type: GameActionTypes.resetColorList
 }
 
 export type GameAction = NewColorAction | NewGameAction
@@ -22,7 +29,14 @@ export class GameActions {
     payload: color
   })
 
-  static newGame: () => NewGameAction = () => ({
+  static newGame: (Array<Color>) => NewGameAction = () => ({
     type: GameActionTypes.newGame
+  })
+
+  static resetColorList: (
+    Array<Color>
+  ) => ResetColorListAction = (colors: Array<Color>) => ({
+    type: GameActionTypes.resetColorList,
+    payload: colors
   })
 }
