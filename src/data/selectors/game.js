@@ -19,8 +19,10 @@ export class GameSelectors {
     gameState(state).colorList
 
   static currentColor: State => Color = createSelector(
-    GameSelectors.currentColorIndex,
-    GameSelectors.colorList,
+    [
+      GameSelectors.currentColorIndex,
+      GameSelectors.colorList
+    ],
     (
       currentColorIndex: CurrentColorIndex,
       colorList: ColorList
@@ -34,8 +36,10 @@ export class GameSelectors {
   )
 
   static hasColorsRemaining: State => boolean = createSelector(
-    GameSelectors.currentColorIndex,
-    GameSelectors.colorList,
+    [
+      GameSelectors.currentColorIndex,
+      GameSelectors.colorList
+    ],
     (
       currentColorIndex: CurrentColorIndex,
       colorList: ColorList
