@@ -32,4 +32,19 @@ export class GameSelectors {
       return colorList[currentColorIndex]
     }
   )
+
+  static hasColorsRemaining: State => boolean = createSelector(
+    GameSelectors.currentColorIndex,
+    GameSelectors.colorList,
+    (
+      currentColorIndex: CurrentColorIndex,
+      colorList: ColorList
+    ) => {
+      if (!colorList) {
+        return null
+      }
+
+      return currentColorIndex < colorList.length - 1
+    }
+  )
 }

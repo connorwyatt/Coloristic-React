@@ -19,6 +19,8 @@ const currentColorIndex = (
   switch (action.type) {
     case GameActionTypes.resetColorList:
       return 0
+    case GameActionTypes.makeGuess:
+      return state + 1
     default:
       return state
   }
