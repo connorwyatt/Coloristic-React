@@ -5,12 +5,13 @@ import {
   GameActions,
   GameActionTypes
 } from '../actions/game'
+import { randomise } from '../utils/randomiser'
 
 const newGame = $action => {
   return $action.pipe(
     ofType(GameActionTypes.newGame),
     map(() => {
-      const randomColors = colors
+      const randomColors = randomise(colors)
 
       return GameActions.resetColorList(randomColors)
     })
